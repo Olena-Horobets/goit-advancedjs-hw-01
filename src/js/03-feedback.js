@@ -20,9 +20,15 @@ const onInput = throttle(e => {
 const onSubmit = e => {
   e.preventDefault();
 
+  if (!data.email || !data.message) {
+    return alert('Please, fill all form fields');
+  }
+
   console.log(data);
   localStorage.removeItem(KEY);
-  setFormData(form, { email: '', message: '' });
+  data.email = '';
+  data.message = '';
+  setFormData(form, data);
 };
 
 setFormData(form, data);
